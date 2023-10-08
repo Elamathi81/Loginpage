@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('1920x1080-aesthetic-glrfk0ntspz3tvxg.jpg'); /* Add your image URL here */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        form {
+            background-color: #fff;
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #007bff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 50%;
+            outline: none;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        input[type="button"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="button"]:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <h1>Login Form</h1>
+    <form action="#" method="POST">
+        <label for="email">Email<span>*</span>:</label>
+        <input type="text" id="email" name="email" required>
+        
+        <label for="password">Password<span>*</span>:</label>
+        <input type="password" id="password" name="password" required>
+        <div class="error-message" id="password-error"></div>
+
+        <input type="button" value="Login" onclick="validateCredentials()">
+    </form>
+
+    <script>
+        function validateCredentials() {
+            // Get user input
+            var userEmail = document.getElementById("email").value;
+            var userPassword = document.getElementById("password").value;
+
+            // Clear previous error messages
+            document.getElementById("password-error").innerHTML = "";
+
+            // Email validation
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailPattern.test(userEmail)) {
+                document.getElementById("password-error").innerHTML = "Invalid email address. Please enter a valid email.";
+                return;
+            }
+
+            // Password validation
+            var passwordPattern = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$/;
+            if (!passwordPattern.test(userPassword)) {
+                document.getElementById("password-error").innerHTML = "Invalid password. Please make sure your password contains at least:\n\n- 8 characters\n- One uppercase letter\n- One special character\n- One number";
+                return;
+            }
+
+            // Successful login
+            alert("Login Successful!");
+        }
+    </script>
+</body>
+</html>
